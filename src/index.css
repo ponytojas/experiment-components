@@ -31,3 +31,7 @@
     animation: pulseScale 45s ease-in-out infinite;
     transform-origin: center;
 }
+
+body {
+    overscroll-behavior: none;
+}
