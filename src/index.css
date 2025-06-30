@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@keyframes slowRotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulseScale {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.95);
+    }
+}
+
+.slow-rotate {
+    animation: slowRotate 600s linear infinite;
+    transform-origin: center;
+}
+
+.pulse-scale {
+    animation: pulseScale 45s ease-in-out infinite;
+    transform-origin: center;
+}
