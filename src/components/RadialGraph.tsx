@@ -18,7 +18,7 @@ const RadialGraph: React.FC = () => {
     };
 
     const intermediateNodes = Array.from({ length: intermediateCount }, (_, i) => {
-        const angle = randomOffset(i * (360 / intermediateCount), 10);
+        const angle = randomOffset(i * (360 / intermediateCount), 20);
         return {
             angle,
             pos: polarToCartesian(radiusLevels[1], angle),
@@ -26,7 +26,7 @@ const RadialGraph: React.FC = () => {
     });
 
     const externalNodes = Array.from({ length: externalCount }, (_, i) => {
-        const angle = randomOffset(i * (360 / externalCount), 5);
+        const angle = randomOffset(i * (360 / externalCount), 15);
         return {
             angle,
             pos: polarToCartesian(radiusLevels[2], angle),
@@ -35,8 +35,7 @@ const RadialGraph: React.FC = () => {
 
     return (
         <div className="flex justify-center items-center w-full h-full">
-            <svg width={300} height={300} className="text-white slow-rotate">
-                {/* Círculos concéntricos */}
+            <svg width={300} height={300} className="text-white not-so-slow-rotate">
                 {radiusLevels.slice(1).map((r, i) => (
                     <circle
                         key={`circle-${i}`}
@@ -50,7 +49,6 @@ const RadialGraph: React.FC = () => {
                     />
                 ))}
 
-                {/* Conexiones del centro a nodos intermedios */}
                 {intermediateNodes.map((node, i) => (
                     <line
                         key={`line-center-${i}`}
@@ -63,7 +61,6 @@ const RadialGraph: React.FC = () => {
                     />
                 ))}
 
-                {/* Conexiones jerárquicas intermedio → externo */}
                 {intermediateNodes.map((mid, i) => {
                     const leftChild = externalNodes[(2 * i) % externalCount];
                     const rightChild = externalNodes[(2 * i + 1) % externalCount];
@@ -89,17 +86,14 @@ const RadialGraph: React.FC = () => {
                     );
                 })}
 
-                {/* Nodo central */}
-                <circle cx={center.x} cy={center.y} r={10} fill="currentColor" />
+                <circle cx={center.x} cy={center.y} r={6} fill="currentColor" />
 
-                {/* Nodos intermedios */}
                 {intermediateNodes.map((node, i) => (
-                    <circle key={`mid-${i}`} cx={node.pos.x} cy={node.pos.y} r={6} fill="currentColor" />
+                    <circle key={`mid-${i}`} cx={node.pos.x} cy={node.pos.y} r={4} fill="currentColor" />
                 ))}
 
-                {/* Nodos externos */}
                 {externalNodes.map((node, i) => (
-                    <circle key={`ext-${i}`} cx={node.pos.x} cy={node.pos.y} r={4} fill="currentColor" />
+                    <circle key={`ext-${i}`} cx={node.pos.x} cy={node.pos.y} r={3} fill="currentColor" />
                 ))}
             </svg>
         </div>
