@@ -10,6 +10,17 @@
     }
 }
 
+@keyframes slowRotateReverse {
+    0% {
+        transform: rotate(360deg);
+    }
+
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+
 @keyframes pulseScale {
 
     0%,
@@ -44,6 +55,16 @@
 
 .slow-rotate {
     animation: slowRotate 600s linear infinite;
+    transform-origin: center;
+}
+
+.not-so-slow-rotate {
+    animation: slowRotate 300s linear infinite;
+    transform-origin: center;
+}
+
+.not-so-slow-rotate-reverse {
+    animation: slowRotateReverse 300s linear infinite;
     transform-origin: center;
 }
 
